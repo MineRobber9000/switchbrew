@@ -4,10 +4,18 @@
 </head>
 <body>
 <h1>MineRobber's SwitchBrew</h1>
+<p id="ahem">Please press a button on the gamepad...</p>
 <script>
-var gamepad = new Gamepad();
+/*var gamepad = new Gamepad();
 gamepad.init();
-document.write("<p>Gamepad: "+gamepad.id+"</p>");
+document.write("<p>Gamepad: "+gamepad.id+"</p>");*/
+var polling = setInterval(pollGamepads,100);
+function pollGamepads() {
+	var gamepads = navigator.webkitgetGamepads();
+	if (!gamepads) { return; };
+	document.getElementById("ahem").innerText = "Gamepad: "+gamepads[0].id;
+	clearInterval(polling);
+}
 </script>
 </body>
 </html>
