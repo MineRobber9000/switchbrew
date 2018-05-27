@@ -11,7 +11,7 @@ gamepad.init();
 document.write("<p>Gamepad: "+gamepad.id+"</p>");*/
 var polling = setInterval(pollGamepads,100);
 function pollGamepads() {
-	var gamepads = navigator.webkitgetGamepads();
+	var gamepads = navigator.getGamepads();
 	if (!gamepads) { return; };
 	document.getElementById("ahem").innerText = "Gamepad: "+gamepads[0].id;
 	clearInterval(polling);
